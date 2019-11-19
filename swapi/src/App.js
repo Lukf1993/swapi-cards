@@ -1,18 +1,18 @@
 import React, {useEffect, useState} from 'react';
-import API_KEY from './config/API_KEY';
-import './App.css';
+import API_URL from './config/API_URL';
+import './App.scss';
 
 const App = () => {
-  const [person, setPerson] = useState([]);
+  const [people, setPeople] = useState([]);
   const [films, setFilms] = useState([]);
 
   useEffect(() =>{
     (async () => {
-      const data = await fetchData(API_KEY) 
+      const data = await fetchData(API_URL) 
       const people = await fetchData(data.people)
       const films = await fetchData(data.films)
 
-      setPerson(people.results);
+      setPeople(people.results);
       setFilms(films.results);
       
     })()    
@@ -25,22 +25,32 @@ const App = () => {
    
   return(
     <>
-      {person.map(item => {
+    <div className='card'>
+      {people.map(item => {
         const personMovie = films.filter(film => {
           return item.films.includes(film.url)
         })
         return (
-          <div key={item.url}>{item.name}
-          <ul>
-            {personMovie.map(movie => (
-              <li>
-                {movie.title}
-              </li>
-            ))}
-          </ul>
-        </div>
+          <div className='card__item' key={item.url}>
+            <h1>{item.name}</h1>
+            <p>{`Height: ${item.height}`}</p>
+            <p>{`Mass: ${item.mass}`}</p>
+            <p>{`Hair Color: ${item.hair_color}`}</p>
+            <p>{`Eye Color: ${item.eye_color}`}</p>
+            <p>{`Gender: ${item.gender}`}</p>
+            <ul>
+              {personMovie.map(movie => (
+                <li>
+                  {movie.title}
+                </li>
+              ))}
+            </ul>
+          </div>
         )     
       })}
+      </div>
+      <button>Powrót</button>
+      <button>Dalej</button>
     </>
   )
 }
