@@ -41,7 +41,11 @@ const App = () => {
   }
 
   const addFavorite = item => {
-    setFavorite([...favorite, item])
+    if(favorite.includes(item)) {
+      alert("lubisz to już")
+    } else {
+      setFavorite([...favorite, item])    
+    }
   }
   const removeFavorie = item => {
     const newArr = favorite.filter(el => el !== item)
