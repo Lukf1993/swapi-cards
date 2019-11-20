@@ -1,8 +1,10 @@
 import React from 'react';
+import CardContent from './CardContent';
 
 const Favorite = props => {
     const favorite = props.favorite;
     const films = props.films;
+    const removeFavorie = props.removeFavorie;
 
     return(
         <div className='card'>
@@ -12,19 +14,8 @@ const Favorite = props => {
           })
           return (
             <div className='card__item' key={item.url}>
-              <h1>{item.name}</h1>
-              <p>{`Height: ${item.height}`}</p>
-              <p>{`Mass: ${item.mass}`}</p>
-              <p>{`Hair Color: ${item.hair_color}`}</p>
-              <p>{`Eye Color: ${item.eye_color}`}</p>
-              <p>{`Gender: ${item.gender}`}</p>
-              <ul>
-                {personMovie.map(movie => (
-                  <li>
-                    {movie.title}
-                  </li>
-                ))}
-              </ul>
+              <button onClick={() => removeFavorie(item)}>Usuń z ulubionych</button>
+              <CardContent personMovie={personMovie} item={item} />
             </div>
           )     
         })}
