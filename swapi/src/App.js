@@ -9,15 +9,16 @@ const App = () => {
   const [films, setFilms] = useState([]);
   const [favorite, setFavorite] = useState([]);
   const [load, setLoad] = useState(false);
+  const [page, setPage] = useState({next: {}, previous: {}})
 
   useEffect(() =>{
     (async () => {
       const data = await fetchData(API_URL) 
       const people = await fetchData(data.people)
       const films = await fetchData(data.films)
-
       setPeople(people.results);
       setFilms(films.results);
+      setPage({next: people.next, previous: people.previous});
       
     })()    
   }, [])
@@ -25,7 +26,19 @@ const App = () => {
   async function fetchData(url) {
     const response = await fetch(url);
     return response.json();
-};
+  };
+
+  const onClick = URL => {
+    if(URL !== null) {
+      fetchData(URL)
+        .then(res => {
+          setPeople(res.results);
+          setPage({next: res.next, previous: res.previous})
+        })
+    }
+  }
+
+
    
   return(
     <>
@@ -33,8 +46,8 @@ const App = () => {
       <Favorite favorite={favorite} films={films} /> :
       <Card people={people} films={films} />
     }
-      <button>Previous</button>
-      <button>Next</button>
+      <button onClick={() => onClick(page.previous)}>Previous</button>
+      <button onClick={() => onClick(page.next)}>Next</button>
     </>
   )
 }
