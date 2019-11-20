@@ -12,7 +12,7 @@ const Card = props => {
           return item.films.includes(film.url)
         })
         return (
-          <div className='card__item' key={item.url}>
+          <div className='card__item' key={item.url} onClick={() => props.addFavorite(item)}>
             <h1>{item.name}</h1>
             <p>{`Height: ${item.height}`}</p>
             <p>{`Mass: ${item.mass}`}</p>

@@ -38,13 +38,19 @@ const App = () => {
     }
   }
 
+  const addFavorite = item => {
+    setFavorite([...favorite, item])
+  }
+
+
 
    
   return(
     <>
     {load === true ? 
-      <Favorite favorite={favorite} films={films} /> :
-      <Card people={people} films={films} />
+      <Favorite favorite={favorite} films={films} /> 
+      :
+      <Card people={people} films={films} addFavorite={addFavorite} />
     }
       <button onClick={() => onClick(page.previous)}>Previous</button>
       <button onClick={() => onClick(page.next)}>Next</button>

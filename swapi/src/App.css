@@ -20,3 +20,11 @@
 .App-link {
   color: #09d3ac;
 }
+.card{
+  display: flex;
+}
+.card__item{
+  border: #09d3ac solid 1px;
+  padding: 10px;
+  margin: 10px;
+}
