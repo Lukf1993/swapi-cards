@@ -42,15 +42,29 @@ const App = () => {
     setFavorite([...favorite, item])
   }
 
+  const loadPage = el => {
+    setLoad(el);
+  }
+
 
 
    
   return(
     <>
+    <button onClick={() => loadPage(true)}>Pokaż ulubione</button>
+    <button onClick={() => loadPage(false)}>Wszystkie Karty</button>
     {load === true ? 
-      <Favorite favorite={favorite} films={films} /> 
+      <Favorite 
+        favorite={favorite} 
+        films={films} 
+      /> 
       :
-      <Card people={people} films={films} addFavorite={addFavorite} />
+      <Card 
+        people={people} 
+        films={films} 
+        addFavorite={addFavorite}
+
+      />
     }
       <button onClick={() => onClick(page.previous)}>Previous</button>
       <button onClick={() => onClick(page.next)}>Next</button>

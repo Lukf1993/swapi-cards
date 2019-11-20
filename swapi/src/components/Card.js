@@ -4,6 +4,7 @@ const Card = props => {
     
     const people = props.people;
     const films = props.films;
+    const addFavorite = props.addFavorite;
     
     return (
        <div className='card'>
@@ -12,7 +13,8 @@ const Card = props => {
           return item.films.includes(film.url)
         })
         return (
-          <div className='card__item' key={item.url} onClick={() => props.addFavorite(item)}>
+          <div className='card__item' key={item.url}>
+            <button  onClick={() => addFavorite(item)}>Ulubione</button>
             <h1>{item.name}</h1>
             <p>{`Height: ${item.height}`}</p>
             <p>{`Mass: ${item.mass}`}</p>
