@@ -1,10 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import API_URL from './config/API_URL';
+import Card from './components/Card';
+import Favorite from './components/Favorite'
 import './App.scss';
 
 const App = () => {
   const [people, setPeople] = useState([]);
   const [films, setFilms] = useState([]);
+  const [favorite, setFavorite] = useState([]);
+  const [load, setLoad] = useState(false);
 
   useEffect(() =>{
     (async () => {
@@ -25,32 +29,12 @@ const App = () => {
    
   return(
     <>
-    <div className='card'>
-      {people.map(item => {
-        const personMovie = films.filter(film => {
-          return item.films.includes(film.url)
-        })
-        return (
-          <div className='card__item' key={item.url}>
-            <h1>{item.name}</h1>
-            <p>{`Height: ${item.height}`}</p>
-            <p>{`Mass: ${item.mass}`}</p>
-            <p>{`Hair Color: ${item.hair_color}`}</p>
-            <p>{`Eye Color: ${item.eye_color}`}</p>
-            <p>{`Gender: ${item.gender}`}</p>
-            <ul>
-              {personMovie.map(movie => (
-                <li>
-                  {movie.title}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )     
-      })}
-      </div>
-      <button>Powrót</button>
-      <button>Dalej</button>
+    {load === true ? 
+      <Favorite favorite={favorite} films={films} /> :
+      <Card people={people} films={films} />
+    }
+      <button>Previous</button>
+      <button>Next</button>
     </>
   )
 }
