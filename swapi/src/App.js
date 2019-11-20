@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import API_URL from './config/API_URL';
 import Card from './components/Card';
-import Favorite from './components/Favorite'
+import Favorite from './components/Favorite';
+import Menu from './components/Menu';
+import Navigate from './components/Navigate';
 import './App.scss';
 
 const App = () => {
@@ -14,7 +16,7 @@ const App = () => {
   useEffect(() =>{
     (async () => {
       const data = await fetchData(API_URL) 
-      const people = await fetchData(data.people)
+       const people = await fetchData(data.people)
       const films = await fetchData(data.films)
       setPeople(people.results);
       setFilms(films.results);
@@ -41,22 +43,25 @@ const App = () => {
   const addFavorite = item => {
     setFavorite([...favorite, item])
   }
+  const removeFavorie = item => {
+    const newArr = favorite.filter(el => el !== item)
+    setFavorite(newArr);
+  }
 
   const loadPage = el => {
     setLoad(el);
   }
 
 
-
    
   return(
     <>
-    <button onClick={() => loadPage(true)}>Pokaż ulubione</button>
-    <button onClick={() => loadPage(false)}>Wszystkie Karty</button>
+    <Menu loadPage={loadPage} />
     {load === true ? 
       <Favorite 
         favorite={favorite} 
         films={films} 
+        removeFavorie={removeFavorie}
       /> 
       :
       <Card 
@@ -66,8 +71,10 @@ const App = () => {
 
       />
     }
-      <button onClick={() => onClick(page.previous)}>Previous</button>
-      <button onClick={() => onClick(page.next)}>Next</button>
+      <Navigate 
+        onClick={onClick}
+        page={page}
+       />
     </>
   )
 }
