@@ -1,0 +1,14 @@
+body {
+    background: #000;
+}
+
+h1, p, li {
+    pointer-events: none;
+}
+
+.logo {
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0 auto;
+    display: block;
+}
