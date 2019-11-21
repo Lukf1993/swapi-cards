@@ -5,10 +5,10 @@ const Menu = props => {
     const loadPage = props.loadPage;
     
     return(
-        <>
-            <button onClick={() => loadPage(true)}>Pokaż ulubione</button>
-            <button onClick={() => loadPage(false)}>Wszystkie Karty</button>
-        </>
+        <div className='menu'>
+            <span onClick={() => loadPage(true)} className='menu__button'>Pokaż ulubione</span>
+            <span onClick={() => loadPage(false)} className='menu__button'>Wszystkie Karty</span>
+        </div>
     )
 }
 
