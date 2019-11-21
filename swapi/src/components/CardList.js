@@ -7,7 +7,7 @@ const CardList = props => {
     return(
         <ul>
             {personMovie.map(movie => (
-            <li>
+            <li key={movie.url}>
                 {movie.title}
             </li>
             ))}

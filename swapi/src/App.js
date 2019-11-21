@@ -30,6 +30,8 @@ const App = () => {
     return response.json();
   };
 
+  const getPersonMovie = item => films.filter(film => item.films.includes(film.url))
+
   const onClick = URL => {
     if(URL !== null) {
       fetchData(URL)
@@ -61,17 +63,19 @@ const App = () => {
   return(
     <>
     <Menu loadPage={loadPage} />
-    {load === true ? 
+    {load ? 
       <Favorite 
         favorite={favorite} 
         films={films} 
         removeFavorie={removeFavorie}
+        getPersonMovie={getPersonMovie}
       /> 
       :
       <Card 
         people={people} 
         films={films} 
         addFavorite={addFavorite}
+        getPersonMovie={getPersonMovie}
 
       />
     }

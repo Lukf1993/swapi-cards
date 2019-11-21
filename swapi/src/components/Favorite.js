@@ -4,10 +4,8 @@ import CardContent from './CardContent';
 const Favorite = props => {
   
     const favorite = props.favorite;
-    const films = props.films;
     const removeFavorie = props.removeFavorie;
-
-    const getPersonMovie = item => films.filter(film => item.films.includes(film.url))
+    const getPersonMovie = props.getPersonMovie   
     
     return(
         <div className='card'>
