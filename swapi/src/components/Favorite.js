@@ -4,15 +4,15 @@ import CardContent from './CardContent';
 const Favorite = props => {
   
     const favorite = props.favorite;
-    const removeFavorie = props.removeFavorie;
-    const getPersonMovie = props.getPersonMovie   
+    const getPersonMovie = props.getPersonMovie;
+    const addRemoveFavorite= props.addRemoveFavorite;
     
     return(
         <div className='card'>
         {favorite.map(item => (
               <div className='card__item' key={item.url}>
-                <button onClick={() => removeFavorie(item)}>Usuń z ulubionych</button>
                 <CardContent personMovie={getPersonMovie(item)} item={item} />
+                <span className='card__button card__button--rotate' onClick={() => addRemoveFavorite(item)}>Usuń</span>
               </div>
         ))}
         </div> 

@@ -43,18 +43,14 @@ const App = () => {
     }
   }
 
-  const addFavorite = item => {
-    favorite.includes(item) 
-    ? 
-    alert("lubisz to już") 
-    : 
-    setFavorite([...favorite, item])
+  const addRemoveFavorite = (item) => {
+    if(favorite.includes(item)) {
+      const newArr = favorite.filter(el => el !== item)
+      setFavorite(newArr);
+    } else {
+      setFavorite([...favorite, item])
+    }
   }
-  const removeFavorie = item => {
-    const newArr = favorite.filter(el => el !== item)
-    setFavorite(newArr);
-  }
-
   const loadPage = el => {
     setLoad(el);
   }
@@ -66,14 +62,15 @@ const App = () => {
     {load ? 
       <Favorite 
         favorite={favorite} 
-        removeFavorie={removeFavorie}
+        addRemoveFavorite={addRemoveFavorite}
         getPersonMovie={getPersonMovie}
       /> 
       :
       <>
       <Card 
         people={people} 
-        addFavorite={addFavorite}
+        favorite={favorite} 
+        addRemoveFavorite={addRemoveFavorite}
         getPersonMovie={getPersonMovie}
       />
       <Navigate 
