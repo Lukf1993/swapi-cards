@@ -5,7 +5,7 @@ const CardList = props => {
     const personMovie = props.personMovie;
 
     return(
-        <ul>
+        <ul className='card__face card__face--back'>
             {personMovie.map(movie => (
             <li key={movie.url}>
                 {movie.title}

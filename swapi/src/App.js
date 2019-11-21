@@ -4,7 +4,7 @@ import Card from './components/Card';
 import Favorite from './components/Favorite';
 import Menu from './components/Menu';
 import Navigate from './components/Navigate';
-import './App.scss';
+import './scss/App.scss';
 
 const App = () => {
   const [people, setPeople] = useState([]);
@@ -16,12 +16,12 @@ const App = () => {
   useEffect(() =>{
     (async () => {
       const data = await fetchData(API_URL) 
-       const people = await fetchData(data.people)
+      const people = await fetchData(data.people)
       const films = await fetchData(data.films)
+
       setPeople(people.results);
       setFilms(films.results);
       setPage({next: people.next, previous: people.previous});
-      
     })()    
   }, [])
 
@@ -43,11 +43,11 @@ const App = () => {
   }
 
   const addFavorite = item => {
-    if(favorite.includes(item)) {
-      alert("lubisz to już")
-    } else {
-      setFavorite([...favorite, item])    
-    }
+    favorite.includes(item) 
+    ? 
+    alert("lubisz to już") 
+    : 
+    setFavorite([...favorite, item])
   }
   const removeFavorie = item => {
     const newArr = favorite.filter(el => el !== item)
@@ -57,8 +57,6 @@ const App = () => {
   const loadPage = el => {
     setLoad(el);
   }
-
-
    
   return(
     <>
@@ -66,23 +64,23 @@ const App = () => {
     {load ? 
       <Favorite 
         favorite={favorite} 
-        films={films} 
         removeFavorie={removeFavorie}
         getPersonMovie={getPersonMovie}
       /> 
       :
+      <>
       <Card 
         people={people} 
-        films={films} 
         addFavorite={addFavorite}
         getPersonMovie={getPersonMovie}
-
       />
-    }
       <Navigate 
         onClick={onClick}
         page={page}
        />
+       </>
+    }
+      
     </>
   )
 }
