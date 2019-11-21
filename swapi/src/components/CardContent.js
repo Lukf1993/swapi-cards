@@ -9,12 +9,12 @@ const CardContent = props => {
     return(
         <>
             <div className='card__face card__face--front'>
-                <h1>{item.name}</h1>
-                <p>{`Height: ${item.height}`}</p>
-                <p>{`Mass: ${item.mass}`}</p>
-                <p>{`Hair Color: ${item.hair_color}`}</p>
-                <p>{`Eye Color: ${item.eye_color}`}</p>
-                <p>{`Gender: ${item.gender}`}</p>
+                <h1 className='card__title'>{item.name}</h1>
+                <p className='card__text'>{`Height: ${item.height}`}</p>
+                <p className='card__text'>{`Mass: ${item.mass}`}</p>
+                <p className='card__text'>{`Hair Color: ${item.hair_color}`}</p>
+                <p className='card__text'>{`Eye Color: ${item.eye_color}`}</p>
+                <p className='card__text'>{`Gender: ${item.gender}`}</p>
             </div>
             <CardList personMovie={personMovie} />
         </>
