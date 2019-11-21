@@ -4,6 +4,7 @@ import Card from './components/Card';
 import Favorite from './components/Favorite';
 import Menu from './components/Menu';
 import Navigate from './components/Navigate';
+import { ReactComponent as Logo} from './logo.svg';
 import './scss/App.scss';
 
 const App = () => {
@@ -60,6 +61,7 @@ const App = () => {
    
   return(
     <>
+    <Logo className='logo' />
     <Menu loadPage={loadPage} />
     {load ? 
       <Favorite 
