@@ -55,6 +55,16 @@ const App = () => {
       setFavorite([...favorite, item]);
     }
   }
+
+  const toggleClass = (item) => {
+    const parent = item.parentElement;
+    const hasClass = parent.classList;
+    if(!item.classList.contains('card__button')) {
+    if(hasClass.contains('jsReverse')) {
+      parent.classList.toggle('card__item--reverse');
+    }}
+  }
+
   const loadPage = el => {
     setLoad({favorite: el});
   }
@@ -77,6 +87,7 @@ const App = () => {
         favorite={favorite} 
         addRemoveFavorite={addRemoveFavorite}
         getPersonMovie={getPersonMovie}
+        toggleClass={toggleClass}
       />
       <Navigate 
         onClick={onClick}

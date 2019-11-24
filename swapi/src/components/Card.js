@@ -7,15 +7,7 @@ const Card = props => {
     const addRemoveFavorite = props.addRemoveFavorite;
     const getPersonMovie = props.getPersonMovie;
     const favorite = props.favorite;
-    
-    const toggleClass = (item) => {
-      const parent = item.parentElement;
-      const hasClass = parent.classList;
-      if(!item.classList.contains('card__button')) {
-      if(hasClass.contains('jsReverse')) {
-        parent.classList.toggle('card__item--reverse');
-      }}
-    }
+    const toggleClass = props.toggleClass;
     
     return (
        <div className='card'>
