@@ -1,5 +1,6 @@
 body {
     background: #000;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 h1, p, li {
@@ -11,4 +12,10 @@ h1, p, li {
     max-height: 100%;
     margin: 0 auto;
     display: block;
+}
+.loading {
+    height: 100vh;
+    margin: 0 auto;
+    display: block;
+    filter: invert(1);
 }

@@ -7,8 +7,10 @@ const Navigate = props => {
 
     return(
             <>
-                <button onClick={() => onClick(page.previous)}>Previous</button>
-                <button onClick={() => onClick(page.next)}>Next</button>
+            <div className='menu'>
+                <button onClick={() => onClick(page.previous)} className='menu__button'>Previous</button>
+                <button onClick={() => onClick(page.next)} className='menu__button'>Next</button>
+            </div>
             </>
     )
 }
