@@ -69,38 +69,39 @@ const App = () => {
     setLoad({favorite: el});
   }
 
-  const Data = () => {
+  const pageData = () => {
     return (
       <>
-    <Logo className='logo' />
-    <Menu loadPage={loadPage} />
-    {load.favorite ? 
-      <Favorite 
-        favorite={favorite} 
-        addRemoveFavorite={addRemoveFavorite}
-        getPersonMovie={getPersonMovie}
-      /> 
-      :
-      <>
-      <Card 
-        people={people} 
-        favorite={favorite} 
-        addRemoveFavorite={addRemoveFavorite}
-        getPersonMovie={getPersonMovie}
-        toggleClass={toggleClass}
-      />
-      <Navigate 
-        onClick={onClick}
-        page={page}
-       />
-       </>
-    }
+        <Logo className='logo' />
+        <Menu loadPage={loadPage} />
+        {load.favorite ? 
+          <Favorite 
+            favorite={favorite} 
+            addRemoveFavorite={addRemoveFavorite}
+            getPersonMovie={getPersonMovie}
+            toggleClass={toggleClass}
+          /> 
+          :
+          <>
+            <Card 
+              people={people} 
+              favorite={favorite} 
+              addRemoveFavorite={addRemoveFavorite}
+              getPersonMovie={getPersonMovie}
+              toggleClass={toggleClass}
+            />
+            <Navigate 
+              onClick={onClick}
+              page={page}
+            />
+          </>
+        }
     </> 
     )
   }
   
   return(
-    load.page ? <Loading className='loading' />  : Data()     
+    load.page ? <Loading className='loading' />  : pageData()     
   )
 }
 

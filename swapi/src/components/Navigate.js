@@ -6,12 +6,10 @@ const Navigate = props => {
     const page = props.page;
 
     return(
-            <>
             <div className='menu'>
                 <button onClick={() => onClick(page.previous)} className='menu__button'>Previous</button>
                 <button onClick={() => onClick(page.next)} className='menu__button'>Next</button>
             </div>
-            </>
     )
 }
 
