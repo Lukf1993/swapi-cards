@@ -14,8 +14,9 @@ h1, p, li {
     display: block;
 }
 .loading {
-    height: 100vh;
-    margin: 0 auto;
+    max-height: 90vh;
+    max-width: 90vw;
+    margin: 40px auto;
     display: block;
     filter: invert(1);
 }
