@@ -51,6 +51,7 @@ const App = () => {
     if(favorite.includes(item)) {
       const newArr = favorite.filter(el => el !== item);
       setFavorite(newArr);
+      alert("Dodano do ulubionych");
     } else {
       setFavorite([...favorite, item]);
     }
